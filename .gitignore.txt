@@ -1,1 +1,2 @@
-LibroJAVA/.settings/
+LibroJAVA/.settings
+LibroJAVA/bin
