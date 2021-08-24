@@ -1,0 +1,17 @@
+package clase_y_objeto;
+
+// Prueba del tipo enum Libro
+
+public class PruebaEnum {
+
+	public static void main(String[] args) {
+		System.out.println( "Todos los libros:\n" );
+		
+		// imprime todos los libros en enum Libro
+		for (Libro libro : args) {
+			
+		}
+		
+	}
+
+}

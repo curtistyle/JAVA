@@ -1,0 +1,17 @@
+package clase_y_objeto;
+
+// Objeto Tiempo1 utilizando en una aplicación.
+public class PruebaTiempo1 {
+	public static void main(String[] args) {
+		
+		// crea e inicializa un objeto Tiempo1
+		Tiempo1 tiempo = new Tiempo1(); // invoca el constructor Tiempo1
+		
+		// imprime representaciones de cadena del tiempo
+		System.out.print("La hora universal inicial es: ");
+		System.out.println(tiempo.aStringUniversal());
+		System.out.println("La hora incial estandar es: ");
+		System.out.print(tiempo.toString());
+		
+	}
+}
