@@ -56,3 +56,9 @@ Parece ser que proporcionar herramientas para *establecer* y *obtener* es esenci
 > Una clase puede tener referencias a objetos de otra clase como miembros. A dicha capacidad se le conoce como **composicion** y algunas veces como **relacion "tiene un"**. *La composicion es una forma de reutilizacion de software, en donde una clase tiene como miembros referencias a onjetos de otras clases*
 
 Observe que en la clase `Fecha` en la linea 17 en el constructor muestra en pantalla la referencia `this` como un objeto `String`. Como `this` es una referencia al objeto `Fecha` actual, se hace una llamada implicita al método `toString` para obtener la representacion `String` del objeto.
+
+La clase `Empleado` tiene la variables de instancia `primerNombre`, `apellidoPaterno`, `fechaNacimiento`, `fechaContratación`. Lo miembros `fechaNacimiento` y `fechaContratacion` son referencias a objetos `Fecha`. Esto demuestra que una clase puede tener como variables de instancia referencias a objetos de otras clases.
+
+Los objetos referenciados por los parametros `fechaDeNacimiento` y `fechaDeContratacion` se asignan a las variables de instancia `fechaNacimiento` y `fechaContratacion` del objeto `Empleado`, respectivamente. Observe que cuando se hace una llamada al metodo `toString` de la clase `Empleado`, este devuelve un objeto `String` que contiene las representaciones `String` de los dos objetos `Fecha`. Cada uno de estos objetos `String` se obtiene mediante una llamada implícita al método `toString` de la clase `Fecha`.
+
+La clase `PruebaEmpleado` crea dos objetos `Fecha` para representar la fecha de nacimiento y de contratacion de un `Empleado`,  respectivamente. La linea 12 invoca en forma implicita el metodo `toString` de `Empleado` para mostrar en pantalla los valores de sus variables de instancia y demostrar que el objeto de inicialización en forma apropiada.
