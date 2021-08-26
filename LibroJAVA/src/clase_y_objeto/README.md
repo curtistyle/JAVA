@@ -20,5 +20,39 @@ El método `aStringUniversal()` no recibe argumentos y devuelve un objeto `Strin
 
 ## Referencia a los miembros del objeto actual mediante this.
 
+*Archivo: PruebaThis*
+
+>Cada bojeto puede acceder a una referencia a sí mismo mediante la palabra clace `this` (tambien conocida como referencia **referencia `this`**). Cuando se hace una llamada a un método no `static` para un objeto especifico, el cuerpo del método utiliza en forma implícita la palabra clave `this` para hacer referencia a las variables de instancia y los demas métodos del objeto. 
+
+Observe  que en el constructor "`public TiempoSimple( int hora, int minuto, int segundo)`" recibe tres argumentos `int` para inicializar un objeto `TiempoSimple`. Observe que para el constructor usamos nombres de parametros identicos a los nombres de *las variables de instancia de la clase*. No recomendamos esta practica pero lo hicimos aqui para ocultar las variables de instancia correspondientes y asi poder ilustrar el uso explicito de la referencia `this`.
+
+> Si un metodo contiene una variable local con el mismo nombre que el de un campo, hará referencia a la variable local en vez del campo.
+
+En este caso, la variable local oculta el campo en el alcance del metodo. No obstante, el método puede utilizar la referencia `this` para hacer referencia al campo oculto de manera explicita, como se muestra en el constructor.
+
+## Tjemplo práctico de la clase Tiempo2: constructores sobrecargados
+
+*Archivo: Tiempo2*
+
+La clase `Tiempo2` contiene cinco constructores sobrecargados que proporcionan formas convenientes para inicializar los objetos de la nueva clase `Tiempo2`. Cada constructor inicializa el objeto para que empiece en un estado consistente.
+
+Para invocar el constructor apropiado, el compilador relaciona el numero, los tipos y el orden de los argumentos especificados en la llamada al constructor con el número, los tipos y el orden de los tipos de los parametros especificados en la declaracion de cada constructor.
+
+En el primer constructor utiliza la referencia `this` en la sintaxis de la llamada al metodo para invocar al constructor de `Tiempo2` que recibe tres argumentos *(constructor de la linea 28)*. El constructor sin argumentos pasa los valores de 0 para `hora`, `minuto` y `segundo` al constructor con tres parametros *(constructor de la linea 28)*. El uso de la referencia `this` que se muestra aqui en una forma popular de reutilizar el codigo de inicializacion que proporciona otro de los constructores de la clase, en vez de definir código similar en el cuerpo del constructor sin argumentos. Utilizamos esta sintaxis en cuatro de los cinco constructores de Tiempo2 para que la clase sea mas facil de mantener y modificar. 
+
+## Observaciones acerca de los métodos Establecer y Obtener
+
+Los métodos *establecer* tambien se conocen comúnmente como **metodos mutadores**, porque generalmente cambia un valor. Los métodos *obtener* tambien se conocen comúnmente como **metodos de acceso** o **metodos de consulta**.
+
+### Comparacion entre los metodos *establecer* y *obtener*
+
+Parece ser que proporcionar herramientas para *establecer* y *obtener* es esencialmente lo mismo que hacer las variables de instancia `public`. Si una variable de instancia se declara como `public`, cualquier metodo que tenga una referencia a un objeto que contenga esta variable de instancia podrá leer o escribir en ella. Si una variable de instancia se declara como `private`, un metodo *obtener* `public` evidentemente permite a otros metodos el acceso a la varaible, pero el metodo *obtener* puede controlar la manera en que el cliente puede tener acceso a la variable. Por ejemplo, un metodo *obtener* podria controlar el formato de los datos que devuelve y, por ende, proteger el codigo cliente de la representacion actual de los datos. Un metodo *establcer* `public` puede (y debe) escudriñar cuidadosamente los intentos por modificar el valor de la variable, para asegurar que el nuevo valor sea apropiado para ese elemento de datos. Por ejemplo, un intento por *establecer* el dia del mes en una fecha 37 seria rechazado, un intento por *establecer* el peso de una personaen un valor negativo sería rechazado, y asi sucesivamente. Entonces aunque los metodos *establecer* y *obtener* proporcionan acceso a los datos privados, el programador restringe su acceso mediante la implementacion de los metodos.
 
 
+## Composicion
+
+*Archivo: Fecha, Empleado, PruebaEmpleado*
+
+> Una clase puede tener referencias a objetos de otra clase como miembros. A dicha capacidad se le conoce como **composicion** y algunas veces como **relacion "tiene un"**. *La composicion es una forma de reutilizacion de software, en donde una clase tiene como miembros referencias a onjetos de otras clases*
+
+Observe que en la clase `Fecha` en la linea 17 en el constructor muestra en pantalla la referencia `this` como un objeto `String`. Como `this` es una referencia al objeto `Fecha` actual, se hace una llamada implicita al método `toString` para obtener la representacion `String` del objeto.

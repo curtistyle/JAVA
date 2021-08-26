@@ -11,7 +11,7 @@ public class Tiempo2 {
 	// asegura que los objetos Tiempo2 empiecen en un estado consistente
 
 	public Tiempo2() {
-		this( 0, 0, 0 );  // invoca al constructor de Tiempo2 con tres argumentos (el constructor de la linea 28)
+		this( 0, 0, 0 );  // invoca al constructor de Tiempo2 con tres argumentos
 	} // fin del constructor
 	
 	// constructor de Tiempo2: suministra hora, minuto, segundo con valor predeterminado de 0

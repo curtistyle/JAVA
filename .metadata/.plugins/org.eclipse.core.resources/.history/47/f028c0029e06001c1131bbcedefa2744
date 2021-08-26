@@ -1,17 +1,15 @@
 package clase_y_objeto;
 
-// Declaracion de la clase Tiempo2 con constructores sobrecargados
-
 public class Tiempo2 {
-	private int hora;      // 0 - 23 
-	private int minuto;    // 0 - 59
-	private int segundo;   // 0 - 59
+	private int hora;
+	private int minuto;
+	private int segundo;
 	
 	// constructor de Tiempo2 sin argumentos: inicializa cada variable de instancia a cero;
 	// asegura que los objetos Tiempo2 empiecen en un estado consistente
 
 	public Tiempo2() {
-		this( 0, 0, 0 );  // invoca al constructor de Tiempo2 con tres argumentos (el constructor de la linea 28)
+		this( 0, 0, 0 );  // invoca al constructor de Tiempo2 con tres argumentos
 	} // fin del constructor
 	
 	// constructor de Tiempo2: suministra hora, minuto, segundo con valor predeterminado de 0

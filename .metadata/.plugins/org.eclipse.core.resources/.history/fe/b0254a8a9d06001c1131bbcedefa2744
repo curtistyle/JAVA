@@ -23,9 +23,7 @@ class TiempoSimple{
 	
 	// usa la referencia 'this' explicita e implicita para llamar aStringUniversal
 	public String crearString() {
-		return String.format( "%24s: %s\n%24s: %s", 
-			"this.aStringUniversal()", this.aStringUniversal(),  // llama al metodo de forma explícita
-					"aStringUniversal()",aStringUniversal() );   // llama al metodo de forma implícita
+		return String.format( "%24s: %s\n%24s: %s", "this.aStringUniversal()", this.aStringUniversal(), "aStringUniversal()",aStringUniversal() ); 
 	} //fin del metodo CrearString
 	
 	// convierte a String en formato hora universal (HH:MM:SS)
