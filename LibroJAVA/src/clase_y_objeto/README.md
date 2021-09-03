@@ -115,4 +115,16 @@ De un momento a otro, el recolector de basura puede podria reclamar la memoria p
 >Una **declaracion `static` import individual** y una que importa a todos los miembros `static` de una clase (**declaracion `static` import sobre demanda**). la siguiente sintazis importa un miembro `static` especifico:
 >>`import static` *nombrePaquete.NombreClase.nombreMiembroEstatico;*
 
->en donde *nombrePaquete* es el paquete de la clase (por ejemplo, java.lang) y *nombreClase* es el nombre de la clase (por ejemplo, `Math`). El asterisco (*) indica que todos los miembros `static` de la clase especificada deben estar disponible para usarlos en la(s) clase(s) en el archivo. Observe que las declaraciones `static` 
+>en donde *nombrePaquete* es el paquete de la clase (por ejemplo, java.lang) y *nombreClase* es el nombre de la clase (por ejemplo, `Math`). El asterisco (*) indica que todos los miembros `static` de la clase especificada deben estar disponible para usarlos en la(s) clase(s) en el archivo. Observe que las declaraciones `static import` solo importa miembros de clase `static`. Las instrucciones `import` regulares deben usarse para especificar las clases utilizadas en un programa.
+
+## Variables de instancia `final`
+
+*Archivo: Incremento*
+
+Algunas variables de instancia necesitan modificarse, mientras que otras no. Usted puede utilizar la palabra clave `fianl` para especificar que una variable no pede modificarse (es decir, que sea una constante) y que cualquier intento por modificarla seria un error.
+
+>`private final int` INCREMENTO;
+
+Aunque las constantes se pueden inicializar al momento de declararse, no es obligatorio. Las constantes pueden inicializarse mediante cada uno de los constructores de la clase.
+
+>Observe que la variable `final` no se inicializa en su declaración, por lo que debe inicializarse mediante el constructor de la clase (linea 9 a 11). Si la clase proporciona varios constructores, cada constructor tendra que inicializar la variable `final`.
