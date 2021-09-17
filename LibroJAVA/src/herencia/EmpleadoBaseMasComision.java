@@ -4,6 +4,7 @@ package herencia;
 // un salario base, además de la comision
 
 public class EmpleadoBaseMasComision {
+	// la llamada implicita al constructor Object ocurre aqui
 	private String primerNombre;
 	private String apellidoPaterno;
 	private String numeroSeguroSocial;
