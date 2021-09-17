@@ -44,5 +44,11 @@ El metodo `toString` es especial: es uno de los metodos que hereda cualquier cla
 
 En la Linea 22 imprime en pantalla la representacion en cadena del `EmpeladoPorComision` actualizado. Observe que cuando se imprime un objeto en pantalla usando el especificador de formato %s, se invoca de manera implicita el metodo `toString` del objeto para tener su representacion de cadena. 
 
+## Creacion de una clase `EmpleadoBaseMasComision` sin usar la herencia
+
+Observe que la clase `EmpleadoBaseMasComision` no especifica "`extends Object`" en la linea 6, por lo que la clase extiende a `Object` en forma implicita. Observe ademas que, al igual que el constructor de la clase `EmpleadoPorComision`, el constructor de la clase `EmpleadoBaseMasComision` invoca al constructor predeterminado de la clase `Object` en forma implicita, como se indica en el comentario de la linea 18.
+
+ 
+
 
 
