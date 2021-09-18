@@ -46,9 +46,68 @@ En la Linea 22 imprime en pantalla la representacion en cadena del `EmpeladoPorC
 
 ## Creacion de una clase `EmpleadoBaseMasComision` sin usar la herencia
 
+*Archivo: EmpleadoBaseMasComision y PruebaEmpleadoBaseMasComision*
+
 Observe que la clase `EmpleadoBaseMasComision` no especifica "`extends Object`" en la linea 6, por lo que la clase extiende a `Object` en forma implicita. Observe ademas que, al igual que el constructor de la clase `EmpleadoPorComision`, el constructor de la clase `EmpleadoBaseMasComision` invoca al constructor predeterminado de la clase `Object` en forma implicita, como se indica en el comentario de la linea 18.
 
- 
+## Creacion de una jerarquia de herencia `EmpleadoPorComision-EmplaedoBaseMasComision`
+
+Un objeto `EmpleadoBaseMasComision2` *es un* `EmpleadoPorComision` (ya que la herencia traspasa las capacidades de la clase `EmpleadoPorComision`), pero la clase `EmpleadoBaseMasComision2` tambien tiene la variable de instancia `salarioBase`. La palabra clave extends en la linea 5 de la declaracion de la clase indica la herencia. Como subclase, `EmpleadoBaseMasComision2` hereda las variables de instancia `public` y `protected` y los metodos de la clase `EmpleadoPorComision`. El constructor de la clase `EmpleadoPorComision` no se hereda. Por lo tanto, los servicios `public` de `EmpleadoBaseMasComision2` incluyen su constructor. 
+
+El constructor de cada subclase debe llamar en forma implicita o explicita al constructor de su superclase, para asegurar que las variables de instancia heredadas de la superclase se incialicen en forma apropiada. El constructor de `EmpleadoBaseMasComision2` con seis argumentos llama en forma explicita al constructor de la clase `EmpleadoPorComision` con cinco argumentos, para inicializar la porción correspondiente a la superclase de un objeto `EmpleadoBaseMasComision2`. La linea 11 en el constructor de `EmpleadoBaseMasComision2` con seis argumentos invoca al constructor de `EmpleadoPorComision` con cinco argumentos mediante el uso de la **sintaxis de llamada al constructor de la superclase**: la palabra clave `super`, seguida de un conjunto de parentesis que contienen los argumentos del constructor de la superclase. Si el constructor de `EmpleadoBaseMasComision2` no invocara al constructor de `EmpleadoPorComision` de manera explicita, Java trataria de invocar al constructor predeterminado o sin argumentos de la clase `EmpleadoPorComsion`; pero como la clase no tiene un constructor así, el compilador genera un error. La llamada explicita al constructor de la superclase en la linea 11 sebe ser la primera instrucción en el cuerpo del constructor de la subclase. Ademas, cuando una superclase contiene un constructor sin argumentos, puede llamar a `super()` para llamar a ese constructor de forma explicita, pero esto se hace raras veces. 
+
+El compilador genera errores para la linea 29 debido a que las variables de instancia `tarifaComision` y `ventasBrutas` de la superclase `EmpleadoPorComision` son `private`; no se permite a los metodos de la subclase `EmpleadoBaseMasComision2` acceder a las variables de instancia `private` de la superclase `EmpleadoPorComision`.
+
+## La jerarquia de herencia `EmpleadoPorComision-EmpleadoBaseMasComision` mediante el uso de variables de instancia `protected`
+
+*Archivo: EmpleadoPorComision2*
+
+Para permitir que la clase `EmpleadoBaseMasComision` acceda directamente a las variables de instancia `primerNombre`, `apellidoPaterno`, `numeroSeguroSocial`, `ventasBrtuas` y `tarifaComision` de la superclase, podemos declarar esos miembros como `protected` en la superclase.
+
+*Archivo: EmpleadoBaseMasComision3* 
+
+La clase `EmpleadoBaseMasComision3` es una modificaciónd de la clase `EmpleadoBaseMasComision2`, que extiende a `EmpleadoPorComision2` en vez de la clase `EmpleadoPorComision`. Los objetos de la clase `EmpleadoBaseMasComision3` hereda las variables de instancia `protected` `primerNombre`, `apellidoPaterno`, `numeroSeguroSocial`, `ventasBrutas` y `tarifaComision` de `EmpleadoPorComision2`; ahora todas estas variables son miembros `protected` de `EmpleadoBaseMasComision3`. Como resultado, el compilador no genera errores al compilar la linea 27 del metodo `ingresos` y las lineas 33 a 35 del metodo `toString`. Si otra clase extiende a `EmpleadoBasePorComision3`, la nueva subclase tambien hereda los miembros `protected`.
+
+*Archivo: PruebaEmpleadoBaseMasComision3* 
+
+En este ejemplo declaramos las variables de instancia de la superclase como `protected` para que las subclases pudieran heredarlas. Al heredar variables en la subclase, sin incurrir en la sobrecarga de una llamada a un metodo *establecer* u *obtener*. No obstante, en la mayoria de los casos es mejor utilizar variables de instancia `private`, para cumplir con la ingenieria de `software` apropiada, y dejas al compilador las cuestiones relacionadas con la optimizacion del codigo. Su codigo sera mas facil de mantener, modificar y depurar. 
+
+El uso de variables de instancia `protected` crea varios problemas potenciales. En primer lugar, el objeto de la subclase pude establecer el valor de una variables heredad directamente, sin utilizar un metodo *establecer*. Por lo tanto un metodo de la subclase pude asignar un valor invalido a la variable, con lo cual el objeto queda en un estado inconsistente. 
+
+El segundo problema con el uso de variables de instancia `protected` es que hay mas probabilidad de que los metodos de la subclase se escriban de manera que dependan de la implementacion de datos de la superclase. En la practica, la subclases solo deben depender de los servicios de la superclase (es decir, metodos que sean `private`) y no en la implementacion de datos de la superclase.
+
+Un tercer problemas es que los miembros `protected` de una clase son visibles para todas las clases que se encuentren en mismo paquete que la clase que contiene los miembros `protected`; esto no siempre es conveniente. 
+
+## La jerarquía de herencia `EmpleadoPorComision`-`EmpleadoBaseMasComision` mediante el uso de variables de instancia `private`
+
+Ahora reexaminaremos nuestra jerarquia una vez mas, pero ahora utilizaremos las mejores practicas de ingenieria de software.
+
+*Archivo: EmpleadoPorComision3*
+
+Observe que los metodos `ingresos` y `toString` utilizan los metodos *obtener* de la clase para obtener los valores de sus variables de instancia. Si decidimos modificar los nombres de las variables de instancia, no habra que modificar las declaraciones de `ingresos` y de `toString`; solo habra que modificar los cuerpos de los metodos *obtener* y *establecer* que manipulan directamente estas variables de instancia. Observe que estos cambios ocurren solo dentro de la superclase; no se necesitan cambios en la subclase. 
+
+*Archivo: EmpleadoBaseMasComision4*
+
+La clase `EmpleadoBaseMasComision4` tiene varios cambios en las implementaciones de sus metodos, que la diferencian de la clase `EmpleadoBaseMasComision3`. Los metodos `ingresos` y `toString` invocan cada uno al metodo `obtenerSalarioBase` para obtener el valor del salario base, en vez de acceder en forma directa a `salarioBase`. Si decidimos cambia el nombre de la variable de instancia `salarioBase`, solo habra que modificar los cuerpos de los metodos `establecerSalarioBase` y `obtenerSalarioBase`.
+
+El metodo `ingresos` de la clase `EmpleadoBaseMasComision4` redefine el metodo `ingresos` de la clase `EmpleadoPorComision3` para calcular los ingresos de un empleado por comision con sueldo base. La nueva version obtiene la porción de los ingresos del empelado, con base en la comision solamente, mediante la llamada al metodo `ingresos` de `EmpleadoPorComision3` con la expresion `super.ingresos()` 
+
+*Archivo: PruebaEmpleadoBaseMasComision*
+
+## Los contructores de la subclase
+
+*Archivo: EmpleadoPorComision4*
+*Archivo: EmpleadoBaseMasComision5*
+*Archivo: PruebaConstructores*
+
+> Al crear una instancia de un objeto de una subclase se empieza una cadena de llamadas a los constructores, en los que el constructor de la subclase, antes de realizar sus propias tareas, invoca al constructor de su superclase, ya sea en forma explicita (por medio de la referencia `super`) o implicita (llamando al constructor predeterminado o sin argumentos de la superclase). El constructor de cada superclase manipula las variables de instancia de la superclase que hereda el objeto de la subclase. 
+
+
+
+
+
+
+
 
 
 
