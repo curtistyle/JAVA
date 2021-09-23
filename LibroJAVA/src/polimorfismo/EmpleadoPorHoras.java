@@ -28,7 +28,7 @@ public class EmpleadoPorHoras extends Empleado {
 		horas = ( ( horasTrabajadas >= 0.0 ) && ( horasTrabajadas <= 168.0 ) ) ? horasTrabajadas : 0.0;
 	} // fin del metodo establecerHoras
 	
-	// devuelve las horas
+	// devuelve las horas trabajadas
 	public double obtenerHoras() {
 		return horas;
 	} // fin del metodo obtenerHoras
@@ -44,7 +44,8 @@ public class EmpleadoPorHoras extends Empleado {
 	
 	// devuelve representacion String de un objeto EmpleadoPorHoras
 	public String toString() {
-		return String.format( "empleado por horas: %s\n%S: $%,.2f; %s: %,.2f", super.toString(), 
-				"sueldo por hora", obtenerSueldo(), "horas trabajadas", obtenerHoras() );
+		return String.format( "empleado por horas: %s\n%s: $%,.2f; %s: %,.2f", super.toString(), 
+				"sueldo por hora", obtenerSueldo(), 
+				"horas trabajadas", obtenerHoras() );
 	} // fin del metodo toString
 } // fin de la clase EmpleadoPorHoras

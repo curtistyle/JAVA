@@ -1,5 +1,7 @@
 package polimorfismo;
 
+// La clase EmpleadoPorComision extiende a Empleado
+
 public class EmpleadoAsalariado extends Empleado {
 	private double salarioSemanal;
 	
