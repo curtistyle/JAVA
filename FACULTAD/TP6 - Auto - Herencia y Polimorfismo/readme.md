@@ -65,3 +65,53 @@ clases hay atributos compartidos, o porque estas clases comparten comportamiento
 
 6. A través de la herencia se puede sobre-escribir un método de la superclase en la subclase ¿Qué
 beneficios supone esto para la creación de sus aplicaciones?
+
+8. Defina una clase Forma que tenga los siguientes miembros de datos: \
+• Color \
+• Coordenada del centro de la forma (objeto Punto con coordenadas x,y) \
+• Nombre de la forma 
+
+Y, al menos, las siguientes funciones miembro: \
+• Imprimir \
+• Obtener y cambiar el color \
+• Mover la forma (o sea, su centro)
+
+Defina una clase derivada Rectángulo que tenga los siguientes miembros como datos: \
+• Lado menor. \
+• Lado mayor.
+
+Y, al menos, las siguientes funciones miembro: \
+• Imprimir. Debe imprimir que se trata de un rectángulo mostrando su nombre, color, centro y
+lado. Debería usarse la función Imprimir de la clase base para realizar parte de este trabajo. \
+• Calcular el área (lado menor * lado mayor). \
+• Calcular el perímetro. (2 * lado menor + 2 * lado mayor). \
+• Cambiar el tamaño del rectángulo. Recibe como parámetro un factor de escala. Así, por
+ejemplo, si el factor vale 2, el rectángulo duplicará su tamaño y si es 0,5 se reducirá a la
+mitad.
+
+**a)** Realice un programa que pruebe el funcionamiento de estas clases. Debe crear objetos y
+comprobar el correcto funcionamiento de las funciones miembro.
+
+**b)** Defina una clase Elipse derivada de forma. Recordatorio: una elipse queda definida por su
+radio mayor (R) y su radio menor (r), tal que el área de una elipse es igual a π*(R*r).
+
+**c)** Defina una clase Cuadrado derivada de la clase Rectángulo.
+
+**d)** Defina una clase Circulo derivada de la clase Elipse
+
+**e)** Realice un programa que defina varias formas diferentes, cree un List de punteros de la clase
+Forma que apunten a los objetos creados. El programa debe realizar un bucle que recorra
+todas las formas, las ponga todas del mismo color y las mueva a una determinada posición.
+
+**f)** Analice qué ocurre en el ejercicio anterior si se intenta imprimir la información de cada
+forma y qué sucede si se intenta obtener en ese bucle el área de todas las formas del vector.
+
+**g)** Utilice la técnica de las funciones virtuales para arreglar los comportamientos anómalos
+detectados en el ejercicio anterior.
+
+**h)** ¿Cómo haría para obligar que todas las clases futuras derivadas tengan al menos los métodos
+“área” y “perímetro”. ¿Tiene sentido incluir definir dichos métodos en la clase Forma?
+
+**i)** Haga un diagrama de clases que refleja la estructura definida hasta el momento. Añádale las
+clases: Punto, Línea, Triángulo, Triángulo Rectángulo y Polígono. ¿Dónde irían? ¿Cuáles
+serían sus atributos y propiedades?
